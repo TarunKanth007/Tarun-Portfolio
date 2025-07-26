@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bankai Entry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Oswald',sans-serif;}
+    body{background:#000;color:#fff;overflow:hidden;display:flex;justify-content:center;align-items:center;height:100vh;flex-direction:column;}
+    h1{font-size:5rem;color:#ff2b2b;text-shadow:0 0 40px #ff0000;}
+    a#enter-btn{
+      margin-top:30px;
+      background:#ff2b2b;
+      padding:15px 30px;
+      border-radius:50px;
+      color:#fff;
+      font-size:1.5rem;
+      cursor:pointer;
+      text-decoration:none;
+      transition:0.3s;
+      z-index:5;
+    }
+    a#enter-btn:hover{
+      background:#e60000;
+      box-shadow:0 0 20px rgba(255,0,0,0.8);
+    }
+    #bankai-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:black;z-index:2000;display:flex;justify-content:center;align-items:center;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 1s;}
+    #bankai-overlay.active{opacity:1;pointer-events:auto;}
+    #bankai-text{font-size:8rem;color:white;text-shadow:0 0 40px #ff0000;opacity:0;transform:scale(0.8);transition:all 0.6s ease-out;}
+    #bankai-text.show{opacity:1;transform:scale(1.2);}
+    #shockwave{position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,0,0,0.2);border-radius:50%;transform:translate(-50%,-50%);opacity:0;z-index:-1;}
+    #shockwave.active{animation:shock 1.5s ease-out forwards;}
+    @keyframes shock{0%{width:0;height:0;opacity:0.7;}100%{width:3000px;height:3000px;opacity:0;}}
+    .particle{position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(255,0,0,0.7);box-shadow:0 0 8px rgba(255,0,0,0.8);animation:float 10s infinite linear;}
+    @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-2000px);}}
+  </style>
+</head>
+<body>
+  <h1>Tarun Movva</h1>
+  <a id="enter-btn" href="portfolio.html">Enter Bankai</a>
+
+  <div id="bankai-overlay">
+    <div id="bankai-text">卍解</div>
+    <div id="shockwave"></div>
+  </div>
+
+  <script>
+    // Particles
+    for(let i=0;i<50;i++){
+      const p=document.createElement('div');
+      p.classList.add('particle');
+      p.style.left=`${Math.random()*window.innerWidth}px`;
+      p.style.top=`${Math.random()*window.innerHeight}px`;
+      p.style.animationDuration=`${5+Math.random()*10}s`;
+      document.body.appendChild(p);
+    }
+
+    const enterBtn = document.getElementById('enter-btn');
+    const overlay = document.getElementById('bankai-overlay');
+    const bankaiText = document.getElementById('bankai-text');
+    const shockwave = document.getElementById('shockwave');
+
+    // On click → animation → redirect
+    enterBtn.addEventListener('click',(e)=>{
+      e.preventDefault(); // prevent instant navigation
+      overlay.classList.add('active');
+      setTimeout(()=>bankaiText.classList.add('show'),400);
+      setTimeout(()=>shockwave.classList.add('active'),800);
+      setTimeout(()=>{ window.location.href = "portfolio.html"; },2000);
+    });
+  </script>
+</body>
+</html>
