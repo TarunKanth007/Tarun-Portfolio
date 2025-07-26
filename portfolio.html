@@ -10,7 +10,10 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Oswald',sans-serif;}
     body{background:#0b0b0b;color:#f5f5f5;scroll-behavior:smooth;overflow-x:hidden;padding-bottom:60px;} /* padding for fixed footer */
     nav{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.8);padding:15px 8%;display:flex;justify-content:space-between;align-items:center;z-index:1000;}
-    nav h3{color:#ff2b2b;font-size:1.8rem;}
+    nav h3 a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff0000;
+}
     nav a{color:#fff;margin:0 15px;text-transform:uppercase;letter-spacing:1px;transition:0.3s;}
     nav a:hover{color:#ff2b2b;text-shadow:0 0 8px #ff0000;}
     section{padding:80px 8%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
@@ -298,7 +301,7 @@
   <div id="watermark-cover"></div>
 
   <nav>
-    <h3>Bankai Portfolio</h3>
+    <h3><a href="index.html" style="color:#ff2b2b; text-decoration:none;">Bankai Portfolio</a></h3>
     <div>
       <a href="#zanpakuto">My Zanpakutō</a>
       <a href="#academy">Soul Reaper Academy</a>
